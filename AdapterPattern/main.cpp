@@ -1,19 +1,22 @@
 #include <iostream>
-
+#include <array>
 using namespace std;
+
+typedef array<char, 4> usb_pins_t;
+typedef array<char, 9> com_pins_t;
 
 class USB
 {
 public:
     virtual ~USB(){};
-    virtual void connect(char pins[4]) {cout<<"USB connected\n";}
+    virtual void connect(usb_pins_t& pins) {cout<<"USB connected\n";}
 };
 
 class COM
 {
 public:
     virtual ~COM(){};
-    virtual void connect(char pins[9]) {cout<<"COM connected\n";}
+    virtual void connect(com_pins_t pins) {cout<<"COM connected\n";}
 };
 
 class USB_COM_adapter : public USB
@@ -22,10 +25,10 @@ class USB_COM_adapter : public USB
 public:
     USB_COM_adapter(const COM &com):_com(com){};
     virtual ~USB_COM_adapter(){};
-    virtual void connect(char pins[4])  override
+    virtual void connect(usb_pins_t& pins)  override
     {
-        char _pins[9] = {0};
-        for (int i = 0; i < 4; i++)
+        com_pins_t _pins{};
+        for (size_t i = 0; i < _pins.size(); ++i)
             _pins[i] = pins[i];
         _com.connect(_pins);
     }
@@ -34,11 +37,11 @@ public:
 class USB_Socket
 {
     USB * _usb;
-    char _pins[4];
+    usb_pins_t _pins;
 public:
     USB_Socket(USB *usb): _usb(usb)
     {
-        for (int i = 0; i < 4; ++i)
+        for (size_t i = 0; i < _pins.size(); ++i)
             _pins[i] = i;
     }
 
