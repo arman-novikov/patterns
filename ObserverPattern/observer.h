@@ -1,12 +1,6 @@
-#ifndef OBSERVER_H_INCLUDED
-#define OBSERVER_H_INCLUDED
-
+#pragma once
 #include <iostream>
-//#include "observed.h"
-/*
-template <typename EventType>
-class Observed;
-*/
+
 using std::cout;
 using std::cin;
 using std::endl;
@@ -29,5 +23,3 @@ void Observer::handleEvent(const Observed<std::string> &obj)
 {
     cout<<obj.getEvent()<<endl;
 }
-
-#endif // OBSERVER_H_INCLUDED

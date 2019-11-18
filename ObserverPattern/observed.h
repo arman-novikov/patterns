@@ -1,5 +1,4 @@
-#ifndef OBSERVED_H_INCLUDED
-#define OBSERVED_H_INCLUDED
+#pragma once
 
 #include <list>
 using std::list;
@@ -51,5 +50,3 @@ void Observed<EventType>::notifyObservers()
     for (auto obs: _observers)
         obs->handleEvent(*this);
 }
-
-#endif // OBSERVED_H_INCLUDED
