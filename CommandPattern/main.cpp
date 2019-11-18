@@ -19,14 +19,14 @@ int main()
 			std::cin >> line;
 			std::cout << "What to insert: ";
 			std::cin >> str;
-			res.insert(line, str);
+			res.insert(static_cast<size_t>(line), str);
 			break;
 		case '2':
 			std::cout << "What line to replace: ";
 			std::cin >> line;
 			std::cout << "What to replace with: ";
 			std::cin >> str;
-			res.replace(line, str);
+			res.replace(static_cast<size_t>(line), str);
 			break;
 		case '3':
 			res.undo();
