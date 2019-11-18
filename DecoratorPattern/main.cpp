@@ -10,14 +10,14 @@ public:
     virtual ~IObject() = default;
 };
 
-class Object: public IObject
+class ObjectA: public IObject
 {
 public:
     void virtual operation() override
     {
         cout<<"car\n";
     }
-    virtual ~Object() {cout << "dtor\n";};
+    virtual ~ObjectA() {cout << "dtor\n";};
 };
 
 class Decorator
@@ -36,7 +36,7 @@ private:
 
 int main()
 {
-    auto obj = make_shared<Object>(Object());
+    auto obj = make_shared<ObjectA>(ObjectA());
     Decorator dectr(obj);
     dectr.decor();
     obj->operation();
