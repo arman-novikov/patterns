@@ -1,6 +1,4 @@
-#ifndef IPROCESS_H_INCLUDED
-#define IPROCESS_H_INCLUDED
-
+#pragma once
 #include "IState.h"
 
 class IProcess
@@ -44,5 +42,3 @@ public:
 		_currentState->getStopped();
 	}
 };
-
-#endif // IPROCESS_H_INCLUDED

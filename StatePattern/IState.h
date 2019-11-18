@@ -1,6 +1,4 @@
-#ifndef ISTATE_H_INCLUDED
-#define ISTATE_H_INCLUDED
-
+#pragma once
 #include <memory>
 
 class IProcess;
@@ -45,4 +43,3 @@ public:
 	void getStarted() override;
 	void getStopped() override;
 };
-#endif // ISTATE_H_INCLUDED
