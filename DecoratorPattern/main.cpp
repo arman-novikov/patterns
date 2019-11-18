@@ -7,22 +7,24 @@ class IObject
 {
 public:
     void virtual operation() = 0;
+    virtual ~IObject() = default;
 };
 
 class Object: public IObject
 {
 public:
-    virtual ~Object() {cout<<"del\n";};
     void virtual operation() override
     {
         cout<<"car\n";
     }
+    virtual ~Object() {cout << "dtor\n";};
 };
 
 class Decorator
 {
 public:
-    Decorator(IObject *obj): _obj_ptr(obj){};
+    Decorator(shared_ptr<IObject> obj):
+        _obj_ptr(obj){}
     void decor()
     {
         cout<<"big ";
@@ -34,8 +36,9 @@ private:
 
 int main()
 {
-    Object *obj = new Object();
+    auto obj = make_shared<Object>(Object());
     Decorator dectr(obj);
     dectr.decor();
+    obj->operation();
     return 0;
 }
